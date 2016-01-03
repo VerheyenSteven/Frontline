@@ -20,7 +20,7 @@ namespace Frontline
         //private bool hit;
         //private int bulletInList = 0;
 
-        List<Bullet> bulletList = new List<Bullet>();//:o
+        List<Bullet> bulletList = new List<Bullet>();
 
         Level level1, activeLevel;
 
