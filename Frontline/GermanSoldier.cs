@@ -12,44 +12,78 @@ namespace Frontline
     {
         private Rectangle visibleRec;
         private bool left, right;
+        private int moveRight = 0, moveLeft = 0, moveDown = 0, moveUp = 0;
 
-        public GermanSoldier(Surface video):base(video)
+        public GermanSoldier(Surface video, int positionX, int positionY):base(video)
         {
-            position = new Point(100, 100);
+            position = new Point(positionX,positionY);
             xVelocity = 1;
+            stillImage = new Surface("Sprites/Graphics/GermanRunStill.png");
+            leftImage = new Surface("Sprites/Graphics/GermanRunLeft.png");
+            rightImage = new Surface("Sprites/Graphics/GermanRunRight.png");
+            displayImage = stillImage;
 
-            displayImage = new Surface("Sprites/Graphics/GermanRunAlpha.png");
-            visibleRec = new Rectangle(0, 0, 95, 90);
-            //colRectangle = new Rectangle(position.X, position.Y, 95, 90);
+            visibleRec = new Rectangle(0, 0, 80, 75);
         }
+
         public override void Draw()
         {
             video.Blit(displayImage, position, visibleRec);
         }
 
-        public override void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown)
-        {
-            Move(activeLevel, collRight, collLeft, collUp, collDown);
-        }
 
-        public override void Move(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown)
+        public override void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown, string moveAmerican)
         {
-            if (position.X >= 50 && position.X <= 400)
+            switch(moveAmerican)
             {
-                position.X += xVelocity;
-                right = true;
-            }
+                case "right": position.X -= 15; break;
+                /*moveRight += 16;
+                          moveLeft -= 16;
+                if (moveRight == 64)
+                {
+                    position.X -= 64;
+                    moveRight = 0;
+                    moveLeft = 0;
+                }
+                 break;*/
 
-            else
-            {
-                xVelocity *= -1;
-                position.X += xVelocity;
-                left = true;
+                case "left": position.X += 15; break;
+                /* moveRight -= 16;
+                 moveLeft += 16;
+                 if (moveLeft == 64)
+                 {
+                     position.X += 64;
+                     moveLeft = 0;
+                     moveRight = 0;
+                 }
+                 break;*/
+                case "up": position.Y += 15; break;
+
+                /* moveUp += 16;
+                 moveDown -= 16;
+                 if (moveUp == 64)
+                 {
+                     position.Y += 64;
+                     moveUp = 0;
+                     moveDown = 0;
+                 }
+                 break;*/
+                case "down": position.Y -= 15; break;
+                    /*
+                    moveDown += 16;
+                    moveUp -= 16;
+                    if (moveDown == 64)
+                    {
+                        
+                        moveDown = 0;
+                        moveUp = 0;
+                    }
+                    break;*/
             }
 
             if (left || right)
             {
-                visibleRec.X += 95;
+                visibleRec.X += 80;
                 if (visibleRec.X >= 192)
                     visibleRec.X = 0;
             }

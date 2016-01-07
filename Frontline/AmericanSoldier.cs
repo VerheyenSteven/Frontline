@@ -35,17 +35,11 @@ namespace Frontline
             xVelocity = 15;
             yVelocity = 15;
       
-
-
-            Events.KeyboardDown += Events_KeyboardDown;
             Events.KeyboardUp += Events_KeyboardUp;
         }
 
-        public override void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown)
-        {
-            Move(activeLevel, collRight, collLeft, collUp, collDown);
-        }
-        public override void Move(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown)
+
+        public override void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown, string moveAmerican)
         {
             if (SdlDotNet.Input.Keyboard.IsKeyPressed(SdlDotNet.Input.Key.LeftArrow))
             {
@@ -116,14 +110,6 @@ namespace Frontline
                     visibleRectangle.X = 0;
             }
 
-            /*colRectangleRight.X = positionMid.X + 75;
-            colRectangleLeft.X = positionMid.X;
-            colRectangleUp.X = positionMid.X + 25;
-            colRectangleDown.X = positionMid.X + 25;
-            colRectangleRight.Y =positionMid.Y + 25;
-            colRectangleLeft.Y = positionMid.Y + 25;
-            colRectangleUp.Y = positionMid.Y + 5;
-            colRectangleDown.Y = positionMid.Y + 70;*/
             activeLevel.DrawWorld(Position);
         }
         public override void Shoot(Bullets bullets)
@@ -138,10 +124,6 @@ namespace Frontline
         private void Events_KeyboardUp(object sender, SdlDotNet.Input.KeyboardEventArgs e)
         {
             direction = "still";
-        }
-        private void Events_KeyboardDown(object sender, SdlDotNet.Input.KeyboardEventArgs e)
-        {
-
         }
 
         public string Direction { get { return direction;}}

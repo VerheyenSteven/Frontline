@@ -12,15 +12,15 @@ namespace Frontline
     public class Bullets
     {
         
-        private List<Bullet> bulletList = new List<Bullet>();
+        private List<Bullet_old> bulletList = new List<Bullet_old>();
         public Rectangle [] collRec;
 
-        public void Add(Bullet bullet)
+        public void Add(Bullet_old bullet)
         {
             bulletList.Add(bullet);
         }
 
-        public void Remove(Bullet bullet)
+        public void Remove(Bullet_old bullet)
         {
             bulletList.Remove(bullet);
         }

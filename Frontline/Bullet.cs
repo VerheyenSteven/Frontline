@@ -19,7 +19,7 @@ namespace Frontline
 
         public Bullet(int initialX, int initialY, string direction)
         {        
-            bulletSpeed = 100;
+            bulletSpeed = 64;
 
             givenDirection = direction;
             initialPosition.X = initialX;

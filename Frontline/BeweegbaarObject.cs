@@ -39,9 +39,7 @@ namespace Frontline
             this.video = video;
         }
 
-        public abstract void Move(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown);
-
-        public abstract void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown);
+        public abstract void Update(Level activeLevel, Boolean collRight, Boolean collLeft, Boolean collUp, Boolean collDown, string moveAmerican);
 
         public abstract void Draw();
 
